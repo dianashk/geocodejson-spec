@@ -1,5 +1,9 @@
 # GeocodeJSON-spec
 
+**Revision**	0.1
+
+**Copyright**	This work is licensed under a Creative Commons Attribution 3.0 United States License.
+
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in
 this document are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).
@@ -37,8 +41,19 @@ keys described here are not exclusive.
   "attribution": "OpenStreetMap Contributors",
 
   // OPTIONAL. Default: null. The query that has been issued to trigger the
-  // search.
-  "query": "24 allée de Bercy 75012 Paris",
+  // search. Object should contain any parameters specified in the query.
+  "query": {
+    // OPTIONAL. Default: null. Search input text.
+    "text": "24 allée de Bercy 75012 Paris",
+    // OPTIONAL. Default: null. Categories specified by the query.
+    "categories": ["shoes","retail"],
+    // OPTIONAL. Default: null. Number of results specified in the query.
+    "size": 10,
+    // OPTIONAL.
+    "offset": 0,
+    // OPTIONAL: Default: null. Coordinates array for reverse search. [longitude, latitude]
+    "coordinates": [2.889957, 50.687328]
+  },
 
   // REQUIRED. As per GeoJSON spec.
   "features": [
@@ -46,6 +61,9 @@ keys described here are not exclusive.
   ]
 }
 ```
+
+### Query object
+
 
 ### Feature object
 
@@ -60,7 +78,7 @@ keys described here are not exclusive.
     // isn't meant to be closed.
     "type": "house",
 
-    // OPTIONAL. Result accuracy, in meters.
+    // OPTIONAL. Result accuracy, in meters. For reverse search indicates distance from specified location.
     "accuracy": 20,
 
     // RECOMMENDED. Suggested label for the result.
@@ -93,7 +111,7 @@ keys described here are not exclusive.
 
     // OPTIONAL. Country of the place.
     "country": "France",
-
+    
     // OPTIONAL. Administratives boundaries the feature is included in,
     // as defined in http://wiki.osm.org/wiki/Key:admin_level#admin_level
     // TODO is there some still generic but less OSMish scheme?
