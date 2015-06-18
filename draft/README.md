@@ -41,20 +41,9 @@ keys described here are not exclusive.
   "attribution": "OpenStreetMap Contributors",
 
   // OPTIONAL. Default: null. The query that has been issued to trigger the
-  // search. Object should contain any parameters specified in the query.
-  "query": {
-    // OPTIONAL. Default: null. Search input text.
-    "text": "24 allée de Bercy 75012 Paris",
-    // OPTIONAL. Default: null. Categories specified by the query.
-    "categories": ["shoes","retail"],
-    // OPTIONAL. Default: null. Number of results specified in the query.
-    "size": 10,
-    // OPTIONAL.
-    "offset": 0,
-    // OPTIONAL: Default: null. Coordinates array for reverse search. [longitude, latitude]
-    "coordinates": [2.889957, 50.687328]
-  },
-
+  // search. In case of additional parameters, can be an object with parameter names as keys.
+  "query": "24 allée de Bercy 75012 Paris",
+    
   // REQUIRED. As per GeoJSON spec.
   "features": [
     // OPTIONAL. An array of feature objects. See below.
@@ -76,7 +65,8 @@ keys described here are not exclusive.
     "type": "house",
     
     // REQUIRED. Name of dataset from which the place was originally sourced. Possible values
-    // can be, but not limitted to: "osm", "geonames", "openaddresses".
+    // can be, but not limitted to: "osm", "geonames", "openaddresses". If derived from multiple sources,
+    // can be an array of dataset names.
     "source": "osm",
 
     // OPTIONAL. Result accuracy, in meters. For reverse search indicates distance from specified location.
@@ -88,16 +78,23 @@ keys described here are not exclusive.
     // OPTIONAL. Name of the place.
     "name": "My Shoes Shop",
 
-    // OPTIONAL. Housenumber of the place.
-    // TODO: what about the suffix (64A, 64 bis, etc.)?
-    "housenumber": "64",
+    // OPTIONAL. Default: null.
+    "addr": {
+    
+      // OPTIONAL. Housenumber of the place.
+      // TODO: what about the suffix (64A, 64 bis, etc.)?
+      "housenumber": "64",
 
-    // OPTIONAL. Street of the place.
-    "street": "Rue de Metz",
+      // OPTIONAL. Street of the place.
+      "street": "Rue de Metz",
 
-    // OPTIONAL. Postcode of the place.
-    "postcode": "59280",
-
+      // OPTIONAL. Postcode of the place.
+      "postcode": "59280",
+      
+      // OPTIONAL. Default: null. Apartment or suite number of the place.
+      "apt": "13A"
+    },
+    
     // OPTIONAL. City of the place.
     "city": "Armentières",
 
