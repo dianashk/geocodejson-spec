@@ -2,7 +2,7 @@
 
 **Revision**	0.1
 
-**Copyright**	This work is licensed under a Creative Commons Attribution 3.0 United States License.
+**Copyright**	This work is licensed under a [Creative Commons Attribution 3.0 License](https://creativecommons.org/licenses/by/3.0/legalcode)
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in
@@ -62,9 +62,6 @@ keys described here are not exclusive.
 }
 ```
 
-### Query object
-
-
 ### Feature object
 
 ```javascript
@@ -77,6 +74,10 @@ keys described here are not exclusive.
     // TODO: make a clean list of common cases, plus make clear that the list
     // isn't meant to be closed.
     "type": "house",
+    
+    // REQUIRED. Name of dataset from which the place was originally sourced. Possible values
+    // can be, but not limitted to: "osm", "geonames", "openaddresses".
+    "source": "osm",
 
     // OPTIONAL. Result accuracy, in meters. For reverse search indicates distance from specified location.
     "accuracy": 20,
